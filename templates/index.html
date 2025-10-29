@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate Generator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            width: 260px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #005fa3;
+        }
+        img {
+            margin-top: 20px;
+            width: 70%;
+            border: 2px solid #0078d7;
+            border-radius: 12px;
+        }
+        a {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #0078d7;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>🎓 Certificate Generator</h2>
+    <form action="/generate" method="post">
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if certificate_url %}
+        <h3>Preview for: {{ name }}</h3>
+        <img src="{{ certificate_url }}" alt="Certificate Preview">
+        <br>
+        <a href="{{ pdf_url }}" download>⬇️ Download as PDF</a>
+    {% endif %}
+</body>
+</html>
